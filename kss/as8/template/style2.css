@@ -1,0 +1,34 @@
+/* Reset default browser styles */
+html, body, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Add additional styles */
+
+/* Define font styles */
+h1, h2, h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+/* Add color scheme based on Neovim Solarized Dark */
+body {
+    --bg-color: #282c34;
+    --text-color: #abb2bf;
+    --title-color: #61afef;
+    --link-color: #61afef;
+}
+
+h1, h2, h3 {
+    color: var(--title-color);
+}
+
+a {
+    color: var(--link-color);
+}
+
+footer {
+    color: var(--text-color);
+}

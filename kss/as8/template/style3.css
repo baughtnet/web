@@ -1,0 +1,41 @@
+/* Define font styles */
+h1, h2, h3 {
+    font-family: 'Courier New', monospace;
+}
+
+/* Add color scheme based on Neovim Solarized Dark */
+body {
+    background-color: #282c34;
+    color: #abb2bf;
+}
+
+h1, h2, h3 {
+    color: #61afef;
+    margin-bottom: 10px;
+}
+
+a {
+    color: #61afef;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #61afef;
+}
+
+.home, .resources, .assignment, .submission {
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+}
