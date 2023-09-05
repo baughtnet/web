@@ -1,0 +1,78 @@
+/* Reset default margin and padding */
+html, body, ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #002b36;
+  color: #90acd3;
+}
+
+/* Define font styles */
+h1, h2, h3, a {
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  color: #abcc33;
+}
+
+header {
+  background-color: #073642;
+  padding: 10px;
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  align-items: right;
+}
+
+header h1 {
+  color: #ffac00;
+  font-size: 50px;
+  padding-left: 25px;
+  grid-row: 1 / span 3;
+}
+
+nav {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+nav ul {
+  font-size: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 5px;
+  justify-content: flex-end;
+  background-color: transparent;
+  transition: background-color 0.5s ease;
+}
+
+nav ul li a {
+  color: #839496;
+  padding: 12px;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #f4ba0b;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the color values as per your requirement */
+}
+
+main {
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+footer {
+  background-color: #073642;
+  padding: 10px;
+  text-align: center;
+}
