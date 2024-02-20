@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.main-page  {
+    background: linear-gradient(54deg, rgba(8,50,2,0.5) 0%, rgba(144,150,68,0.5) 38%, rgba(0,212,255,0.36) 100%),
+    url('cruise1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
