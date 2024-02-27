@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: "Monserrat", sans-serif;
+    font-family: "Ubuntu", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -19,6 +19,9 @@ header {
     display: grid;
     grid-template-columns: 2fr 200px;
     grid-template-rows: 100px, 65px;
+    font-family: "Nunito", sans-serif;
+    font-weight: 600px;
+    font-style: normal;
     padding: 0px;
     background-color: rgba(40, 87, 146, 0.65);
 }
@@ -75,18 +78,62 @@ header img {
     align-items: center;
     margin-top: 100px;
     margin: 100px;
-    padding: 25px;
-    border: 2px inset rgba(50, 94, 70, 1);
-    border-shadow: 10px;
-    border-radius: 17.5px;
-    background-color: rgba(185, 190, 160, 0.4);
+    border: 4px solid rgba(255, 255, 255, 1);
+    border-radius: 15px;
+    background-color: rgba(0, 30, 65, 0.4);
 }
 
 #intro p {
     width: 60vw;
     font-size: 24px;
+    padding: 20px;
 }
 
 #intro img {
     height: 25vh;
+    padding: 5px;
+    border-radius: 12.5px;
 }
+
+#quick-facts ul  {
+    padding-left: 15vh;
+    color: #fff;
+
+}
+
+#social  {
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+}
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+}
+
+.social-icons li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-icons a {
+    color: #333;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.social-icons a:hover  {
+    color: #007bff;
+}
+
+h2  {
+    padding: 15px;
+    font-size: 36px;
+    color: #fff;
+    background: linear-gradient(90deg, rgba(51, 51, 51, 0.4) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.01) 60%);
+    font-family: "Nunito", sans-serif;
+    font-weight: 600px;
+    font-style: normal;
+}
+
