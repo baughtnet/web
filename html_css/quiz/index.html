@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML & CSS Quiz</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="loginModal" class="hidden">
+        <h1>Please enter your information:</h1>
+        <form id="loginForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+            <br>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+            <br>
+            <label for="studentNumber">Student Number:</label>
+            <input type="text" id="studentNumber" name="studentNumber" required>
+            <br>
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+
+    <div id="quizModal" class="hidden">
+      <header>
+        <div class="quiz-title">
+          <h1>HTML & CSS Quiz</h1>
+        </div>
+      </header>
+      <div class="student-info">
+        <h1>Welcome to the Quiz!</h1>
+        <div id="quiz"></div>
+        <button id="submit">Submit Quiz</button>
+        <div id="results"></div>
+        <script src="script.js"></script>
+      </div>
+    </div>
+
+  </body>
+</html>
