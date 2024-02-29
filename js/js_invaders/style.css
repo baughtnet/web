@@ -1,7 +1,7 @@
 body {
     background-color: #0d133d;
     color: #f0f0f0;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Press Start 2P', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,11 +9,19 @@ body {
     height: 100vh;
     overflow: hidden;
     margin: 0;
+    padding: 0;
 }
+
+.score {
+    font-size: 30px;
+    margin: 20px;
+}
+
 
 h1 {
     border: 5px solid #f0f0f0;
     padding: 10px 20px;
+    margin: 20px;
     color: #f0f0f0;
     font-size: 30px;
     font-weight: 800;
@@ -50,4 +58,10 @@ h1 {
 
 .boom {
     background-color: red;
+    animation: explode 0.25s linear;
+}
+
+@keyframes explode {
+    from { transform: scale(1); }
+    to { transform: scale(2.25); opcaity: 0; }
 }
