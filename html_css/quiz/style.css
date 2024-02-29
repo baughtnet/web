@@ -13,3 +13,9 @@ body {
 #loginModal.visible {
   display: block;
 }
+
+/* input[type="radio"] {
+  display: block;
+  margin-bottom: 5px;
+  margin-right: 10px;
+} */

@@ -1,5 +1,24 @@
+const quizContainer = document.getElementById("quiz");
+const submitButton = document.getElementById("submit");
+const resultsContainer = document.getElementById("results");
+const nextButton = document.getElementById("next");
+const prevButton = document.getElementById("prev");
+
+let currentQuestionIndex = 0;
+let score = 0;
+
 // Get the modal
 document.addEventListener("DOMContentLoaded", showLoginModal);
+
+nextButton.addEventListener("click", () => {
+    currentQuestionIndex++;
+    runQuiz(currentQuestionIndex);
+});
+
+prevButton.addEventListener("click", () => {
+    currentQuestionIndex--;
+    runQuiz(currentQuestionIndex);
+});
 
 function showLoginModal() {
     document.getElementById("loginModal").classList.remove("hidden");
@@ -38,8 +57,65 @@ function checkLogin() {
   });
 }
 
-// Quiz questions
+function runQuiz(index) {
+    const question = questions[index];
+    quizContainer.innerHTML = `<h3>${question.question}</h3>`;
 
+    // Create radio buttons
+    question.options.forEach((option, optionIndex) => {
+        const radioInput = document.createElement("input");
+        radioInput.type = "radio";
+        radioInput.name = "question";
+        radioInput.value = optionIndex;
+        radioInput.addEventListener("change", (event) => {
+            if (event.target.checked) {
+                if(optionIndex === question.answer) {
+                    score++;
+                    console.log(score);
+                }
+            }
+        });
+        // quizContainer.append(radioInput);
+        // quizContainer.append(option);
+
+        const label = document.createElement("label");
+        label.textContent = option;
+        label.appendChild(radioInput);
+
+        quizContainer.append(label);
+    });
+    
+    // disable buttons on first and last question
+    prevButton.disabled = currentQuestionIndex === 0;
+    nextButton.disabled = currentQuestionIndex === questions.length - 1;
+}
+
+submitButton.addEventListener("click", () => {
+    questions.forEach((question) => {
+        const selectedAnswer = document.querySelector(`input[name='question'][value='${question.answer}']:checked`);
+        if (selectedAnswer) {
+            score++;
+        }
+    });
+    resultsContainer.innerHTML = `<h2>Your score is ${score} out of ${questions.length}</h2>`;
+
+    let incorrectAnswers = "";
+    for (let i = 0; i < questions.length; i++) {
+        const question = questions[i];
+        const selectedAnswer = document.querySelector(`input[name='question]'][value='${question.answer}']:checked`);
+        if (!selectedAnswer || selectedAnswer.value !== question.answer)  {
+            incorrectAnswers += `<p><b>Question #{i + 1}:</b> {question.question}</p>`;
+            incorrectAnswers += `<p>- Your answer: ${question.options[selectedAnswer ? selectedAnswer.value : 0]}<br></p>`;
+            incorrectAnswers += `<p>- Correct answer: ${question.options[question.answer]}</p>`;
+    }
+}
+    if (incorrectAnswers) {
+        resultsContainer.innerHTML = `<h2>Incorrect Answers</h2>`
+        resultsContainer.innerHTML += incorrectAnswers;
+}
+});
+
+// Quiz questions
 const questions = [
     {
         question: "What does HTML stand for?",
@@ -108,40 +184,37 @@ const questions = [
     },
 ];
 
-const quizContainer = document.getElementById("quiz");
-const submitButton = document.getElementById("submit");
-const resultsContainer = document.getElementById("results");
-const nextButton = document.getElementById("next");
-const prevButton = document.getElementById("prev");
 
-let currentQuestionIndex = 0;
-let score = 0;
 
-function runQuiz(index) {
-    const question = questions[index];
-    quizContainer.innerHTML = `<h3>${question.question}</h3>`;
+// store info
+const firstName = localStorage.getItem("firstName");
+const lastName = localStorage.getItem("lastName");
+const studentNumber = localStorage.getItem("studentNumber");
 
-    // Create radio buttons
-    question.options.forEach((option, optionIndex) => {
-        const radioInput = document.createElement("input");
-        radioInput.type = "radio";
-        radioInput.name = "question";
-        radioInput.value = optionIndex;
-        radioInput.addEventListener("change", (event) => {
-            if (event.target.checked) {
-                if(optionIndex === question.answer) {
-                    score+++;
-                    console.log(score);
-                }
-            }
-        });
-        // quizContainer.append(radioInput);
-        // quizContainer.append(option);
+if (firstName && lastName && studentNumber) {
+    const quizData = {
+      firstName,
+      lastName,
+      studentNumber,
+      score,
+      questions: questions.map((question) => ({
+        question: question.question,
+        userAnswer: question.options[
+          document.querySelector(`input[name='question'][value='${question.answer}']:checked`)?.value
+        ] || "",
+        correctAnswer: question.options[question.answer],
+      })),
+    };
 
-        const label = document.createElement("label");
-        label.textContent = option;
-        label.appendChild(radioInput);
+    // You can use localStorage, cookies, server-side scripting, or any other preferred method to store the quizData object here
+    // For example, using localStorage:
+    localStorage.setItem("quizData", JSON.stringify(quizData));
+    
+    // Display a message indicating successful storage (optional)
+    resultsContainer.innerHTML += `<p>Your quiz information has been stored.</p>`;
+  } else {
+    resultsContainer.innerHTML += `<p>Please enter your information in the login modal to store the quiz results.</p>`;
+  }
 
-        quizContainer.append(label);
-    });
-}
+// Initial setup
+runQuiz(currentQuestionIndex); // Display the first question
